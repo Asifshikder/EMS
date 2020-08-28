@@ -1,0 +1,56 @@
+﻿@model JobFunctionViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- content -->
+<div class="container-fluid">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <h1 class="h2">Job Function Configuration</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Create">Create</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            @if (Model.JobFunctions.Any())
+            {
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Job Function</th>
+                            <th>Function Code</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.JobFunctions)
+                        {
+                            <tr>
+                                <td>@item.JobFunctionId</td>
+                                <td>@item.Section.Department.DepartmentName</td>
+                                <td>@item.Section.SectionName</td>
+                                <td>@item.FunctionName</td>
+                                <td>@item.FunctionCode</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.JobFunctionId" class="btn btn-info btn-sm">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.JobFunctionId" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

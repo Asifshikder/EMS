@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EMS.WebCore</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+
+    @*<environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+            <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        </environment>*@
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-nav flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" asp-controller="Home" asp-action="Index">EMS</a>
+        @*<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">*@
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap mx-2">
+                <a class="nav-link text-white" asp-controller="Account" asp-action="Logout">
+                    <span><i class="fa fa-sign-out text-white fa-lg mr-3"></i></span>
+                </a>
+            </li>
+            <li class="nav-item text-nowrap mx-2">
+                <a class="nav-link text-white" asp-controller="Profile" asp-action="Index">
+                    <span><i class="fa fa-user-circle text-white fa-lg mr-3"></i></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="side-menu">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <!-- dashboard -->
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller="Dashboard" asp-action="Index">
+                                <span><i class="fa fa-th text-white fa-lg mr-3"></i></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <!-- attendance -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-attendance" data-toggle="collapse" aria-controls="collapse-attendance">
+                                <span><i class="fa fa-bar-chart fa-text-width fa-lg mr-3"></i></span>
+                                <span>Attendance</span>
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-attendance">
+                                <li><a asp-area="" asp-controller="Attendance" asp-action="ActiveWork">Active Work</a></li>
+                                <li><a asp-area="" asp-controller="Attendance" asp-action="Absent">Absent List</a></li>
+                                <li><a asp-area="" asp-controller="Attendance" asp-action="Late">Late Time</a></li>
+                                <li><a asp-area="" asp-controller="Attendance" asp-action="Search">Scan Time</a></li>
+                            </ul>
+                        </li>
+                        <!-- employee -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-employee" data-toggle="collapse" aria-controls="collapse-employee">
+                                <span><i class="fa fa-user-circle text-white fa-lg mr-3"></i></span>
+                                <span>Employee</span>
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-employee">
+                                <li><a asp-area="" asp-controller="Employee" asp-action="EmployeeList">Employee List</a></li>
+                                <li><a asp-area="" asp-controller="Employee" asp-action="Register">Register</a></li>
+                            </ul>
+                        </li>
+                        <!-- training record-->
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="#collapse-training" data-toggle="collapse" aria-controls="collapse-training">
+                                    <span><i class="fa fa-list-alt text-white fa-lg mr-3"></i></span>
+                                    Training
+                                </a>
+                                <ul class="collapse collapseable" id="collapse-training">
+                                    <li><a asp-area="" asp-controller="Department" asp-action="Index">Training Course</a></li>
+                                    <li><a asp-area="" asp-controller="Section" asp-action="Index">Training History</a></li>
+                                </ul>
+                            </li>*@
+                        <!-- Employee Skill -->
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="#collapse-allocation" data-toggle="collapse" aria-controls="collapse-allocation">
+                                    <span><i class="fa fa-map text-white fa-lg mr-3"></i></span>
+                                    Skills
+                                </a>
+                                <ul class="collapse collapseable" id="collapse-allocation">
+                                    <li><a asp-area="" asp-controller="EmployeeSkill" asp-action="Index">Manage Skill</a></li>
+                                    <li><a asp-area="" asp-controller="SkillMapping" asp-action="Index">Skill Mapping</a></li>
+                                </ul>
+                            </li>*@
+                        <!-- Request -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-request" data-toggle="collapse" aria-controls="collapse-request">
+                                <span><i class="fa fa-repeat text-white fa-lg mr-3"></i></span>
+                                Request
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-request">
+                                <li><a asp-area="" asp-controller="Request" asp-action="OverTimeReport">OT Report</a></li>
+                                <li><a asp-area="" asp-controller="Request" asp-action="OverTimeRequest">OT Request</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-white">
+                        <span>Configuration</span>
+                        <a class="d-flex align-items-center text-white" href="#">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+
+                        <!-- organization -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-organize" data-toggle="collapse" aria-controls="collapse-organize">
+                                <span><i class="fa fa-database text-white fa-lg mr-3"></i></span>
+                                Organization
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-organize">
+                                <li><a asp-area="" asp-controller="Department" asp-action="Index">Department</a></li>
+                                <li><a asp-area="" asp-controller="Section" asp-action="Index">Section</a></li>
+                                <li><a asp-area="" asp-controller="Shift" asp-action="Index">Work Shift</a></li>
+                                <li><a asp-area="" asp-controller="ShiftCalendar" asp-action="Index">Work Calendar</a></li>
+                                <li><a asp-area="" asp-controller="JobPosition" asp-action="Index">Job Position</a></li>
+                                <li><a asp-area="" asp-controller="JobFunction" asp-action="Index">Job Function</a></li>
+                                <li><a asp-area="" asp-controller="Level" asp-action="Index">Level</a></li>
+                            </ul>
+                        </li>
+                        <!-- education -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-education" data-toggle="collapse" aria-controls="collapse-education">
+                                <span><i class="fa fa-book text-white fa-lg mr-3"></i></span>
+                                Education
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-education">
+                                <li><a asp-area="" asp-controller="Degree" asp-action="Index">Degree</a></li>
+                                <li><a asp-area="" asp-controller="Major" asp-action="Index">Major</a></li>
+                            </ul>
+                        </li>
+                        <!-- skill -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-skill" data-toggle="collapse" aria-controls="collapse-skill">
+                                <span><i class="fa fa-star text-white fa-lg mr-3"></i></span>
+                                Operation Skill
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-skill">
+                                <li><a asp-area="" asp-controller="SkillGroup" asp-action="Index">Skill Group</a></li>
+                                <li><a asp-area="" asp-controller="SkillType" asp-action="Index">Skill Type</a></li>
+                                <li><a asp-area="" asp-controller="SKill" asp-action="Index">Skill List</a></li>
+                            </ul>
+                        </li>
+                        <!-- transportation -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#collapse-transport" data-toggle="collapse" aria-controls="collapse-transport">
+                                <span><i class="fa fa-bus text-white fa-lg mr-3"></i></span>
+                                Transportation
+                            </a>
+                            <ul class="collapse collapseable" id="collapse-transport">
+                                <li><a asp-area="" asp-controller="Route" asp-action="Index">Route</a></li>
+                                <li><a asp-area="" asp-controller="BusStation" asp-action="Index">Bus Station</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- content -->
+    @*<div class="container-fluid display-table">
+            <div class="row display-table-row">
+
+                <!-- side menu -->
+                @Html.Partial("_SideMenu")
+
+                <!-- main content area-->
+                <div class="col-md-10 display-table-cell valign-top">
+
+                    <!-- nav menu -->
+                    @Html.Partial("_NavMenu")
+
+                    <!-- content -->
+                    @RenderBody()
+
+                    <!-- footer -->
+                    @Html.Partial("_Footer")
+                </div>
+            </div>
+        </div>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/lib/chartjs/dist/Chart.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @*<environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                    crossorigin="anonymous">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                    crossorigin="anonymous">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>*@
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

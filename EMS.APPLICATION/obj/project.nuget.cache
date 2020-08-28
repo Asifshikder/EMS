@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "DfbnCug6IOKkVter1EnIr9iQBqjEa/vSxdsCOKiXzo8YKRafRf8BYetA9ZO9/cRe4F4sblZn79MMzxZNd4dlew==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Asif Shikder\\source\\repos\\EMS\\EMS.APPLICATION\\EMS.APPLICATION.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Asif Shikder\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\Asif Shikder\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Asif Shikder\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

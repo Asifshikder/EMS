@@ -1,0 +1,345 @@
+﻿@model ProfileViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- content -->
+<div class="row my-4">
+
+    <div class="col col-lg-4">
+        <!-- profile image -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Profile</h5>
+            </div>
+            @if (String.IsNullOrEmpty(Model.ProfileImage))
+            {
+                <img src="~/images/female.png" class="img-thumbnail mx-auto d-block h-50 w-50 mt-4" />
+            }
+            else
+            {
+                <img src="@Model.ProfileImage" class="img-thumbnail mx-auto d-block h-50 w-50 mt-4" alt="avatar">
+            }
+            <div class="card-body text-center">
+                <h5 class="card-title">@Model.Title. @Model.FirstName @Model.LastName</h5>
+                <h6 class="card-text">@Model.TitleThai @Model.FirstNameThai @Model.LastNameThai</h6>
+                <a class="btn btn-primary my-2" asp-controller="Profile" asp-action="EditProfile" asp-route-employeeId="@Model.EmployeeId">Edit Profile</a>
+                @*<a class="btn btn-primary my-2" asp-controller="Profile" asp-action="Edit" asp-route-employeeId="@Model.EmployeeId">Edit Profile</a>*@
+            </div>
+        </div>
+        <!-- contact -->
+        <div class="card mb-4">
+            <h5 class="card-header"><i class="fa fa-phone text-primary mr-3"></i>Contact</h5>
+            <div class="card-body">
+                <h5 class="card-title">Phone</h5>
+                <p class="card-text">@Model.PhoneNumber</p>
+                <h5 class="card-title">Email</h5>
+                <p class="card-text">@Model.EmailAddress</p>
+            </div>
+        </div>
+        <!-- Transport -->
+        <div class="card mb-4">
+            <h5 class="card-header"><i class="fa fa-bus text-primary mr-3"></i>Transportation</h5>
+            <div class="card-body">
+                <h5 class="card-title">Route</h5>
+                <p class="card-text">@Model.RouteName</p>
+                <h5 class="card-title">Bus Station</h5>
+                <p class="card-text">@Model.BusStationName</p>
+            </div>
+        </div>
+        <!-- skill -->
+        <div class="card mb-4">
+            <h5 class="card-header"><i class="fa fa-star text-primary mr-3"></i>Top Skill</h5>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-lg-8 mx-auto">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active" aria-expanded="true">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#skill" data-toggle="tab" class="nav-link" aria-expanded="false">Skill</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#training" data-toggle="tab" class="nav-link" aria-expanded="false">Training</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#messages" data-toggle="tab" class="nav-link" aria-expanded="false">Messages</a>
+            </li>
+        </ul>
+        <div class="tab-content py-4">
+            <!-- profile -->
+            <div class="tab-pane active" id="profile" aria-expanded="true">
+                <div class="row">
+                    <!-- job information -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fa fa-user text-primary mr-3"></i>Organize & Job Information</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Department</h6>
+                                        <p class="card-text">@Model.DepartmentName</p>
+                                        <h6 class="card-title">Job Position</h6>
+                                        <p class="card-text">@Model.PositionName</p>
+                                        <h6 class="card-title">Job Function</h6>
+                                        <p class="card-text">@Model.FunctionName</p>
+                                        <h6 class="card-title">Work Shift</h6>
+                                        <p class="card-text">@Model.ShiftName</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Section</h6>
+                                        <p class="card-text">@Model.SectionName</p>
+                                        <h6 class="card-title">Level</h6>
+                                        <p class="card-text">@Model.LevelCode</p>
+                                        <h6 class="card-title">Job Function Code</h6>
+                                        <p class="card-text">@Model.FunctionCode</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- employee information -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fa fa-user text-primary mr-3"></i>Employee Information</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Employee ID</h6>
+                                        <p class="card-text">@Model.EmployeeId</p>
+                                        <h6 class="card-title">Card ID</h6>
+                                        <p class="card-text">@Model.CardId</p>
+                                        <h6 class="card-title">Hire Type</h6>
+                                        <p class="card-text">@Model.HireType</p>
+                                        <h6 class="card-title">Employye Type</h6>
+                                        <p class="card-text">@Model.EmployeeType</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Global ID</h6>
+                                        <p class="card-text">@Model.GlobalId</p>
+                                        <h6 class="card-title">Status</h6>
+                                        @if (@Model.Status)
+                                        {
+                                            <p class="card-text">Available</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="card-text">Resign</p>
+                                        }
+                                        <h6 class="card-title">Hire Date</h6>
+                                        <p class="card-text">@Model.HireDate.ToString("yyyy-MM-dd")</p>
+                                        <h6 class="card-title">Duration of Employment</h6>
+                                        <p class="card-text">@Model.EmploymentDuration Year</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- personal information -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fa fa-user-circle text-primary mr-3"></i>Personal Information</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Title</h6>
+                                        <p class="card-text">@Model.Title</p>
+                                        <h6 class="card-title">First Name</h6>
+                                        <p class="card-text">@Model.FirstName</p>
+                                        <h6 class="card-title">First Name (Thai)</h6>
+                                        <p class="card-text">@Model.FirstNameThai</p>
+                                        <h6 class="card-title">Height</h6>
+                                        <p class="card-text">@Model.Height</p>
+                                        <h6 class="card-title">Date of Birth</h6>
+                                        <p class="card-text">@Model.BirthDate.ToString("yyyy-MM-dd")</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Gender</h6>
+                                        <p class="card-text">@Model.Gender</p>
+                                        <h6 class="card-title">Last Name</h6>
+                                        <p class="card-text">@Model.LastName</p>
+                                        <h6 class="card-title">Last Name (Thai)</h6>
+                                        <p class="card-text">@Model.LastNameThai</p>
+                                        <h6 class="card-title">Hand</h6>
+                                        <p class="card-text">@Model.Hand</p>
+                                        <h6 class="card-title">Age</h6>
+                                        <p class="card-text">@Model.Age</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- address information -->
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fa fa-address-card text-primary mr-3"></i>Address Information</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Home Address</h6>
+                                        <p class="card-text">@Model.HomeAddress</p>
+                                        <h6 class="card-title">Contry</h6>
+                                        <p class="card-text">@Model.Country</p>
+                                        <h6 class="card-title">City</h6>
+                                        <p class="card-text">@Model.City</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="card-title">Zip Code</h6>
+                                        <p class="card-text">@Model.PostalCode</p>
+                                        <h6 class="card-title">Phone</h6>
+                                        <p class="card-text">@Model.PhoneNumber</p>
+                                        <h6 class="card-title">Email</h6>
+                                        <p class="card-text">@Model.EmailAddress</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+            </div>
+            <!-- message -->
+            <div class="tab-pane" id="messages" aria-expanded="false">
+                <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div>
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="col-md-6">
+                    <h6>About</h6>
+                    <p>
+                        Web Designer, UI/UX Engineer
+                    </p>
+                    <h6>Hobbies</h6>
+                    <p>
+                        Indie music, skiing and hiking. I love the great outdoors.
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <h6>Recent badges</h6>
+                    <a href="#" class="badge badge-dark badge-pill">html5</a>
+                    <a href="#" class="badge badge-dark badge-pill">react</a>
+                    <a href="#" class="badge badge-dark badge-pill">codeply</a>
+                    <a href="#" class="badge badge-dark badge-pill">angularjs</a>
+                    <a href="#" class="badge badge-dark badge-pill">css3</a>
+                    <a href="#" class="badge badge-dark badge-pill">jquery</a>
+                    <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+                    <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+                    <hr>
+                    <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+                    <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+                    <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                </div>
+
+                <div class="col-md-12">
+                    <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+                    <table class="table table-sm table-hover table-striped">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- skill -->
+            <div class="tab-pane" id="skill" aria-expanded="false">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered w-100 mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Skill Group</th>
+                                        <th>Skill Type</th>
+                                        <th>Skill Name</th>
+                                        <th>Skill Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.EmployeeSkills != null)
+                                    {
+                                        @foreach (var e in Model.EmployeeSkills)
+                                        {
+                                            <tr>
+                                                <td>@e.Skill.SkillGroup.SkillGroupName</td>
+                                                <td>@e.Skill.SkillType.SkillTypeName</td>
+                                                <td>@e.Skill.SkillName</td>
+                                                <td>@e.SkillLevel</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <a asp-controller="EmployeeSkill" asp-action="Create" class="btn btn-sm btn-outline-secondary my-3">Add Skill</a>
+                    </div>
+                </div>
+            </div>
+            <!-- tranining -->
+            <div class="tab-pane" id="training" aria-expanded="false">
+
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

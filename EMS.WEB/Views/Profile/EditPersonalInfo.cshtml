@@ -1,0 +1,176 @@
+﻿@model PersonalInfoViewModel
+
+@{
+    ViewData["Title"] = "EditPersonalInfo";
+}
+
+@Html.Partial("_ProfileHeader", Model.ProfileHeader)
+
+<div class="sub-header">
+    <div class="row">
+        <div class="col-md-12 text-center my-4">
+            <h4>Update Personal Information</h4>
+            <h6>Employee personal data and hire information</h6>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <form asp-action="EditPersonalInfo" enctype="multipart/form-data" method="post" class="form-horizontal" role="form">
+                <input asp-for="EmployeeId" type="hidden" />
+                <h4>Personal Information</h4>
+                <hr />
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <select asp-for="Title" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                    </select>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TitleThai">Title Thai</label>
+                    <select asp-for="TitleThai" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="นาย">นาย</option>
+                        <option value="นาง">นาง</option>
+                        <option value="นางสาว">นางสาว</option>
+                        <option value="ว่าที่ร้อยตรี">ว่าที่ร้อยตรี</option>
+                    </select>
+                    <span asp-validation-for="TitleThai" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmployeeType">Employee Type</label>
+                    <select asp-for="EmployeeType" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="EM">Employee</option>
+                        <option value="SC">Sub Contract</option>
+                        <option value="SD">Student Internship</option>
+                        <option value="SP">Special Person</option>
+                    </select>
+                    <span asp-validation-for="EmployeeType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FirstName">First Name (Eng)</label>
+                    <input asp-for="FirstName" type="text" class="form-control">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName">Last Name (Eng)</label>
+                    <input asp-for="LastName" type="text" class="form-control">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FirstNameThai">First Name (Thai)</label>
+                    <input asp-for="FirstNameThai" type="text" class="form-control">
+                    <span asp-validation-for="FirstNameThai" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastNameThai">Last Name (Thai)</label>
+                    <input asp-for="LastNameThai" type="text" class="form-control">
+                    <span asp-validation-for="LastNameThai" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Height">Height</label>
+                    <input asp-for="Height" type="text" class="form-control">
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Gender">Gender</label>
+                    <select asp-for="Gender" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Hand">Hand</label>
+                    <select asp-for="Hand" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="Left">Left</option>
+                        <option value="Right">Right</option>
+                    </select>
+                    <span asp-validation-for="Hand" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BirthDate">Birth Date</label>
+                    <input asp-for="BirthDate" type="text" id="datepicker-birthdate" autocomplete="off" class="form-control" required>
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+
+                <h4>Hire Information</h4>
+                <hr />
+                <div class="form-group">
+                    <label asp-for="GlobalId">Global ID</label>
+                    <input asp-for="GlobalId" type="text" class="form-control">
+                    <span asp-validation-for="GlobalId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CardId">Card ID</label>
+                    <input asp-for="CardId" type="text" class="form-control">
+                    <span asp-validation-for="CardId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="HireType">Hire Type</label>
+                    <select asp-for="HireType" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="Direct">Direct</option>
+                        <option value="Indirect">Indirect</option>
+                    </select>
+                    <span asp-validation-for="HireType" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="HireDate">Hire Date</label>
+                    <input asp-for="HireDate" type="text" id="datepicker-hiredate" autocomplete="off" class="form-control" required>
+                    <span asp-validation-for="HireDate" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="AvailableFlag">Status</label>
+                    <select asp-for="AvailableFlag" class="custom-select d-block w-100" required>
+                        <option value="">Choose...</option>
+                        <option value="True">Available</option>
+                        <option value="False">Resign</option>
+                    </select>
+                    <span asp-validation-for="AvailableFlag" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a asp-controller="Profile" asp-action="Index" asp-route-employeeId="@Model.EmployeeId" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script>
+        $('#datepicker-hiredate').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+        });
+    </script>
+
+    <script>
+        $('#datepicker-birthdate').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+        });
+    </script>
+
+}

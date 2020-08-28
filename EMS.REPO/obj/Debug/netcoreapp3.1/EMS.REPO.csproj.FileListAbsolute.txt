@@ -1,0 +1,17 @@
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.REPO.deps.json
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.REPO.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.APPLICATION.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.DATA.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.APPLICATION.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.DATA.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.csprojAssemblyReference.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.AssemblyInfoInputs.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.AssemblyInfo.cs
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.csproj.CopyComplete
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.REPO.runtimeconfig.json
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.REPO.runtimeconfig.dev.json
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\bin\Debug\netcoreapp3.1\EMS.REPO.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.csproj.CoreCompileInputs.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.REPO\obj\Debug\netcoreapp3.1\EMS.REPO.genruntimeconfig.cache

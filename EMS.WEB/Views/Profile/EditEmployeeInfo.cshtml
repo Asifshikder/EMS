@@ -1,0 +1,136 @@
+﻿@model EmployeeInfoViewModel
+
+@{
+    ViewData["Title"] = "EditEmployeeInfo";
+}
+
+@Html.Partial("_ProfileHeader", Model.ProfileHeader)
+
+<div class="sub-header">
+    <div class="row">
+        <div class="col-md-12 text-center my-4">
+            <h4>Update Organize & Job Information</h4>
+            <h6>Organization and job assignments</h6>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <form asp-action="EditEmployeeInfo" enctype="multipart/form-data" method="post" class="form-horizontal" role="form">
+                <input asp-for="EmployeeId" type="hidden" />
+                <div class="form-group">
+                    <label asp-for="DepartmentId">Department</label>
+                    <select asp-for="DepartmentId" asp-items="@Model.Departments" class="form-control"></select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Section</label>
+                    <select class="form-control" id="SectionId" name="SectionId" asp-for="SectionId" asp-items="@Model.Sections"></select>
+                    <span asp-validation-for="SectionId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Function</label>
+                    <select class="form-control" id="JobFunctionId" name="JobFunctionId" asp-for="JobFunctionId" asp-items="@Model.JobFunctions"></select>
+                    <span asp-validation-for="JobFunctionId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="JobPositionId">Job Position</label>
+                    <select asp-for="JobPositionId" asp-items="@Model.JobPosition" class="form-control"></select>
+                    <span asp-validation-for="JobPositionId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LevelId">Level</label>
+                    <select asp-for="LevelId" asp-items="@Model.JobLevels" class="form-control"></select>
+                    <span asp-validation-for="LevelId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ShiftId">Work Shift</label>
+                    <select asp-for="ShiftId" asp-items="@Model.Shifts" class="form-control"></select>
+                    <span asp-validation-for="ShiftId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="JoinDate">Join Date</label>
+                    <input asp-for="JoinDate" type="text" id="datepicker-joindate" autocomplete="off" class="form-control" required>
+                    <span asp-validation-for="JoinDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RouteId">Transport Route</label>
+                    <select asp-for="RouteId" asp-items="@Model.Routes" class="form-control"></select>
+                    <span asp-validation-for="RouteId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Bus Station</label>
+                    @*<select class="form-control" id="BusStationId" name="BusStationId" asp-for="BusStationId"
+                                asp-items="@(new SelectList(string.Empty, " Value","Text"))"></select>
+                        <span asp-validation-for="BusStationId" class="text-danger"></span>*@
+                    <select class="form-control" id="BusStationId" name="BusStationId" asp-for="BusStationId"
+                            asp-items="@Model.BusStations"></select>
+                    <span asp-validation-for="BusStationId" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a asp-controller="Profile" asp-action="Index" asp-route-employeeId="@Model.EmployeeId" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#DepartmentId').change(function () {
+                    var url = '@Url.Content("~/")' + "Profile/GetSectionByDepartmentId";
+                    $.getJSON(url, { departmentId: $("#DepartmentId").val() }, function (data) {
+                        var items = '';
+                        $("#SectionId").empty();
+                        $.each(data, function (i, section) {
+                            items += "<option value='" + section.value + "'>" + section.text + "</option>";
+                        });
+                        $('#SectionId').html(items);
+                    });
+                });
+
+                $('#SectionId').change(function () {
+                    var url = '@Url.Content("~/")' + "Profile/GetJobFunctionBySectionId";
+                    $.getJSON(url, { sectionId: $("#SectionId").val() }, function (data) {
+                        var items = '';
+                        $("#JobFunctionId").empty();
+                        $.each(data, function (i, jobFunction) {
+                            items += "<option value='" + jobFunction.value + "'>" + jobFunction.text + "</option>";
+                        });
+                        $('#JobFunctionId').html(items);
+                    });
+                });
+
+                $('#RouteId').change(function () {
+                    var url = '@Url.Content("~/")' + "Profile/GetBusStationByRouteId";
+                    $.getJSON(url, { routeId: $("#RouteId").val() }, function (data) {
+                        var items = '';
+                        $("#BusStationId").empty();
+                        $.each(data, function (i, busStation) {
+                            items += "<option value='" + busStation.value + "'>" + busStation.text + "</option>";
+                        });
+                        $('#BusStationId').html(items);
+                    });
+                });
+            });
+    </script>
+
+    <script>
+        $('#datepicker-joindate').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+        });
+    </script>
+}

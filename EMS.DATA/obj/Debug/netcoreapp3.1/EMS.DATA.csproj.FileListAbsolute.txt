@@ -1,0 +1,9 @@
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\bin\Debug\netcoreapp3.1\EMS.DATA.deps.json
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\bin\Debug\netcoreapp3.1\EMS.DATA.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\bin\Debug\netcoreapp3.1\EMS.DATA.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\obj\Debug\netcoreapp3.1\EMS.DATA.csprojAssemblyReference.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\obj\Debug\netcoreapp3.1\EMS.DATA.AssemblyInfoInputs.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\obj\Debug\netcoreapp3.1\EMS.DATA.AssemblyInfo.cs
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\obj\Debug\netcoreapp3.1\EMS.DATA.csproj.CoreCompileInputs.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\obj\Debug\netcoreapp3.1\EMS.DATA.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.DATA\obj\Debug\netcoreapp3.1\EMS.DATA.pdb

@@ -1,0 +1,179 @@
+﻿@model AttendanceViewModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<!-- content -->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+    <h2>Search <span class="badge badge-success">Attendance History</span></h2>
+</div>
+
+<form asp-controller="Attendance" asp-action="Search" method="post">
+    <div class="form-row">
+        <div class="col-md-6 mb-2">
+            <div class="input-group">
+                <div class="input-group-prepend w-25">
+                    <label asp-for="FilterModel.AttendanceDate" class="input-group-text w-100">Work Date</label>
+                </div>
+                <input asp-for="FilterModel.AttendanceDate" type="text" id="datepicker-workdate" autocomplete="off" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="input-group">
+                <div class="input-group-prepend w-25">
+                    <label asp-for="FilterModel.ShiftId" class="input-group-text w-100">Shift</label>
+                </div>
+                <select asp-for="FilterModel.ShiftId" asp-items="@Model.Shifts" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="input-group">
+                <div class="input-group-prepend w-25">
+                    <label asp-for="FilterModel.DepartmentId" class="input-group-text w-100">Department</label>
+                </div>
+                <select asp-for="FilterModel.DepartmentId" asp-items="@Model.Departments" id="departmentSelectList" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="input-group">
+                <div class="input-group-prepend w-25">
+                    <label asp-for="FilterModel.SectionId" class="input-group-text w-100">Section</label>
+                </div>
+                <select class="form-control" id="sectionSelectList" asp-for="FilterModel.SectionId"
+                        asp-items="@(new SelectList(string.Empty, " Value","Text"))"></select>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="input-group">
+                <div class="input-group-prepend w-25">
+                    <label asp-for="FilterModel.FunctionId" class="input-group-text w-100">Job Function</label>
+                </div>
+                <select class="form-control" id="jobFunctionSelectList" asp-for="FilterModel.FunctionId"
+                        asp-items="@(new SelectList(string.Empty, " Value","Text"))"></select>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <div class="input-group">
+                <input asp-for="FilterModel.EmployeeId" type="text" class="form-control" placeholder="Employee ID">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search mr-2"></i>Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@if (Model.Attendances != null)
+{
+    <div class="card mb-3">
+        <div class="card-header bg-white text-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="my-0">Employee Active List</h5>
+                    <p class="mb-0">Total Active Work : @Model.Attendances.Count() Person.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body scroll-box p-0">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-sm w-100 mb-0" id="activeWorkTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="text-center">History</th>
+                            <th>Employee ID</th>
+                            <th>Name (English)</th>
+                            <th>Name (Thai)</th>
+                            <th>Level</th>
+                            <th>Shift</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Job Position</th>
+                            <th>Job Function</th>
+                            <th>Route Name</th>
+                            <th>Bus Station</th>
+                            <th>Scan In Time</th>
+                            <th>Scan Out Time</th>
+                            <th>OT (1.5)</th>
+                            <th>OT (3)</th>
+                            <th>Late (Minute)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in Model.Attendances)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <a class="badge badge-success" asp-action="History" asp-route-employeeId="@e.EmployeeId">View</a>
+                                </td>
+                                <td>@e.EmployeeId</td>
+                                <td>@e.Title. @e.FirstName @e.LastName</td>
+                                <td>@e.TitleThai @e.FirstNameThai @e.LastNameThai</td>
+                                <td>@e.LevelCode</td>
+                                <td>@e.ShiftName</td>
+                                <td>@e.DepartmentCode</td>
+                                <td>@e.SectionName</td>
+                                <td>@e.JobTitle</td>
+                                <td>@e.FunctionName</td>
+                                <td>@e.RouteName</td>
+                                <td>@e.BusStationName</td>
+                                <td>@e.ScanInTime</td>
+                                <td>@e.ScanOutTime</td>
+                                <td>@e.OvertimeNormal</td>
+                                <td>@e.OvertimeSpecial</td>
+                                <td>@e.LateMinute</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer bg-white text-dark">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <a class="btn btn-success" asp-controller="Attendance" asp-action="Download">Dowload</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#departmentSelectList').change(function () {
+                    var url = '@Url.Content("~/")' + "Attendance/GetSectionByDepartmentId";
+                    $.getJSON(url, { departmentId: $("#departmentSelectList").val() }, function (data) {
+                        var items = '';
+                        $("#sectionSelectList").empty();
+                        $.each(data, function (i, section) {
+                            items += "<option value='" + section.value + "'>" + section.text + "</option>";
+                        });
+                        $('#sectionSelectList').html(items);
+                    });
+                });
+
+                $('#sectionSelectList').change(function () {
+                    var url = '@Url.Content("~/")' + "Attendance/GetJobFunctionBySectionId";
+                    $.getJSON(url, { sectionId: $("#sectionSelectList").val() }, function (data) {
+                        var items = '';
+                        $("#jobFunctionSelectList").empty();
+                        $.each(data, function (i, jobFunction) {
+                            items += "<option value='" + jobFunction.value + "'>" + jobFunction.text + "</option>";
+                        });
+                        $('#jobFunctionSelectList').html(items);
+                    });
+                });
+            });
+    </script>
+
+    <script>
+        $('#datepicker-workdate').datepicker({
+            format: 'yyyy/mm/dd',
+            autoclose: true,
+        });
+    </script>
+
+}

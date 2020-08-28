@@ -1,0 +1,12 @@
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.csprojAssemblyReference.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.AssemblyInfoInputs.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.AssemblyInfo.cs
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.csproj.CoreCompileInputs.cache
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\bin\Debug\netcoreapp3.1\EMS.APPLICATION.deps.json
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\bin\Debug\netcoreapp3.1\EMS.APPLICATION.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\bin\Debug\netcoreapp3.1\EMS.DATA.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\bin\Debug\netcoreapp3.1\EMS.DATA.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.csproj.CopyComplete
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\bin\Debug\netcoreapp3.1\EMS.APPLICATION.pdb
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.dll
+C:\Users\Asif Shikder\source\repos\EMS\EMS.APPLICATION\obj\Debug\netcoreapp3.1\EMS.APPLICATION.pdb

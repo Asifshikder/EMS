@@ -1,0 +1,39 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<section id="signInPage">
+
+    <div class="signUpBox">
+        <h1>Register</h1>
+        <h6>Employee Management</h6>
+        <form asp-action="Register" method="post" class="form-signin">
+            <div class="input-group mb-3">
+                <input asp-for="UserName" class="form-control" placeholder="Username" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            @*@if (!ViewData.ModelState.IsValid)
+            {
+                @if (ViewData.ModelState["Error"].Errors != null)
+                {
+                    <p class="text-danger"><b>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</b></p>
+                }
+            }*@
+
+            <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Register</button>
+            <a class="mt-5 mb-3" asp-controller="Account" asp-action="Login">Aleardy have an account? <b>Sign In</b></a>
+        </form>
+    </div>
+</section>
